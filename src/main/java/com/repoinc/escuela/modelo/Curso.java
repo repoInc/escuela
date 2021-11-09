@@ -8,7 +8,8 @@ public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCurso;
+    @Column(name = "id")
+    private String idCurso;
 
     @Column(name = "curso")
     private String curso;
@@ -22,11 +23,11 @@ public class Curso {
     @Column(name = "jornada")
     private String jornada;
 
-    public Long getIdCurso() {
+    public String getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(Long idCurso) {
+    public void setIdCurso(String idCurso) {
         this.idCurso = idCurso;
     }
 

@@ -8,12 +8,13 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "estudiantes")
-public class Estudiante {
+@Table(name = "fichas")
+public class Ficha {
 
     @Id
-    @GeneratedValue
-    private Long idEstudiante;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private String idEstudiante;
 
     @Column(name = "nombre")
     private String nombre;
@@ -41,13 +42,14 @@ public class Estudiante {
 
     @ManyToOne
     @JoinColumn(name = "idCurso")
+    @NonNull
     private Curso curso;
 
-    public Long getIdEstudiante() {
+    public String getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(Long idEstudiante) {
+    public void setIdEstudiante(String idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 
@@ -115,19 +117,20 @@ public class Estudiante {
         this.fechaMatricula = fechaMatricula;
     }
 
+    @NonNull
     public Curso getCurso() {
         return curso;
     }
 
-    public void setCurso(Curso curso) {
+    public void setCurso(@NonNull Curso curso) {
         this.curso = curso;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Estudiante)) return false;
-        Estudiante that = (Estudiante) o;
+        if (!(o instanceof Ficha)) return false;
+        Ficha that = (Ficha) o;
         return getIdEstudiante().equals(that.getIdEstudiante()) && getNombre().equals(that.getNombre()) && getApellidos().equals(that.getApellidos()) && getDireccion().equals(that.getDireccion()) && getFechaNacimiento().equals(that.getFechaNacimiento()) && getSexo().equals(that.getSexo()) && getPadre().equals(that.getPadre()) && getMadre().equals(that.getMadre()) && getFechaMatricula().equals(that.getFechaMatricula()) && getCurso().equals(that.getCurso());
     }
 

@@ -1,5 +1,7 @@
 package com.repoinc.escuela.modelo;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 
 import java.util.Objects;
@@ -10,24 +12,27 @@ public class Materia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idMateria;
+    @Column(name = "id")
+    private String idMateria;
 
     @Column(name = "materia")
     private String materia;
 
     @ManyToOne
     @JoinColumn(name = "idCurso")
+    @NonNull
     private  Curso curso;
 
     @ManyToOne
     @JoinColumn(name = "idMaestro")
+    @NonNull
     private  Maestro maestro;
 
-    public Long getIdMateria() {
+    public String getIdMateria() {
         return idMateria;
     }
 
-    public void setIdMateria(Long idMateria) {
+    public void setIdMateria(String idMateria) {
         this.idMateria = idMateria;
     }
 
@@ -39,19 +44,21 @@ public class Materia {
         this.materia = materia;
     }
 
+    @NonNull
     public Curso getCurso() {
         return curso;
     }
 
-    public void setCurso(Curso curso) {
+    public void setCurso(@NonNull Curso curso) {
         this.curso = curso;
     }
 
+    @NonNull
     public Maestro getMaestro() {
         return maestro;
     }
 
-    public void setMaestro(Maestro maestro) {
+    public void setMaestro(@NonNull Maestro maestro) {
         this.maestro = maestro;
     }
 

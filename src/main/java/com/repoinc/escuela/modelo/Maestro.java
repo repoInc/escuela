@@ -9,7 +9,8 @@ public class Maestro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idMaestro;
+    @Column(name = "id")
+    private String idMaestro;
 
     @Column(name = "nombre")
     private String nombre;
@@ -26,11 +27,11 @@ public class Maestro {
     @Column(name = "mail")
     private String email;
 
-    public Long getIdMaestro() {
+    public String getIdMaestro() {
         return idMaestro;
     }
 
-    public void setIdMaestro(Long idMaestro) {
+    public void setIdMaestro(String idMaestro) {
         this.idMaestro = idMaestro;
     }
 
