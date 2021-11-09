@@ -12,7 +12,8 @@ import javax.persistence.*;
 public class Estudiante {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long idEstudiante;
 
     @Column(name = "nombre")
@@ -41,6 +42,7 @@ public class Estudiante {
 
     @ManyToOne
     @JoinColumn(name = "idCurso")
+    @NonNull
     private Curso curso;
 
     public Long getIdEstudiante() {

@@ -1,5 +1,7 @@
 package com.repoinc.escuela.modelo;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 
 import java.util.Objects;
@@ -10,6 +12,7 @@ public class Materia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long idMateria;
 
     @Column(name = "materia")
@@ -17,10 +20,12 @@ public class Materia {
 
     @ManyToOne
     @JoinColumn(name = "idCurso")
+    @NonNull
     private  Curso curso;
 
     @ManyToOne
     @JoinColumn(name = "idMaestro")
+    @NonNull
     private  Maestro maestro;
 
     public Long getIdMateria() {

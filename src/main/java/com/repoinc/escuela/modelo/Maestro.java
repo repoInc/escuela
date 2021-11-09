@@ -9,6 +9,7 @@ public class Maestro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long idMaestro;
 
     @Column(name = "nombre")

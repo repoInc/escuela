@@ -8,6 +8,7 @@ public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long idCurso;
 
     @Column(name = "curso")
