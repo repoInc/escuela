@@ -3,11 +3,12 @@ package com.repoinc.escuela.modelo;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "notas")
-public class Nota {
+public class Nota implements Serializable {
 
     @Id
     @ManyToOne

@@ -1,0 +1,50 @@
+CREATE TABLE IF NOT EXISTS cursos (
+  id VARCHAR PRIMARY KEY,
+  curso VARCHAR(50) DEFAULT NULL,
+  modalidad VARCHAR(50) DEFAULT NULL,
+  seccion VARCHAR(50) DEFAULT NULL,
+  jornada VARCHAR(50) NOT NULL
+) ;
+
+CREATE TABLE IF NOT EXISTS fichas (
+  id VARCHAR PRIMARY KEY,
+  nombre VARCHAR(50) DEFAULT NULL,
+  apellidos VARCHAR(50) DEFAULT NULL,
+  direccion VARCHAR(50) DEFAULT NULL,
+  fechaNacimiento TIME NOT NULL,
+  sexo VARCHAR(50) NOT NULL,
+  padre VARCHAR(50) NOT NULL,
+  madre VARCHAR(50) NOT NULL,
+  fechaMatricula TIME NOT NULL,
+  idCurso VARCHAR NOT NULL REFERENCES cursos(id)
+) ;
+
+CREATE TABLE IF NOT EXISTS maestros (
+  id VARCHAR PRIMARY KEY,
+  nombre VARCHAR(50) DEFAULT NULL,
+  apellido VARCHAR(50) DEFAULT NULL,
+  direccion VARCHAR(50) DEFAULT NULL,
+  telefono VARCHAR(50) NOT NULL,
+  mail VARCHAR(50) NOT NULL
+) ;
+
+CREATE TABLE IF NOT EXISTS materias (
+  id VARCHAR PRIMARY KEY,
+  materia VARCHAR(50) DEFAULT NULL,
+  idCurso VARCHAR NOT NULL REFERENCES cursos(id),
+  idMaestro VARCHAR NOT NULL REFERENCES maestros(id)
+) ;
+
+CREATE TABLE IF NOT EXISTS notas (
+  idEstudiante VARCHAR NOT NULL,
+  idCurso VARCHAR NOT NULL,
+  idMateria VARCHAR NOT NULL,
+  PRIMARY KEY (idEstudiante, idCurso, idMateria),
+  examen_1 FLOAT DEFAULT NULL,
+  examen_2 FLOAT DEFAULT NULL,
+  examen_3 FLOAT DEFAULT NULL,
+  examen_4 FLOAT DEFAULT NULL,
+  promedio FLOAT DEFAULT NULL,
+  recuperacion_1 FLOAT DEFAULT NULL,
+  recuperacion_2 FLOAT DEFAULT NULL
+ ) ;
