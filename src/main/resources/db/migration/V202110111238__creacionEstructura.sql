@@ -48,3 +48,9 @@ CREATE TABLE IF NOT EXISTS notas (
   recuperacion_1 FLOAT DEFAULT NULL,
   recuperacion_2 FLOAT DEFAULT NULL
  ) ;
+
+ CREATE TABLE IF NOT EXISTS conceptos (
+   id VARCHAR PRIMARY KEY,
+   concepto VARCHAR(50) DEFAULT NULL,
+   precio FLOAT DEFAULT NULL
+ ) ;
