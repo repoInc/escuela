@@ -16,7 +16,7 @@ public class Venta {
     private String idVenta;
 
     @ManyToOne
-    @JoinColumn(name = "idempleado")
+    @JoinColumn(name = "idEmpleado")
     @NonNull
     private Empleado empleado;
 
