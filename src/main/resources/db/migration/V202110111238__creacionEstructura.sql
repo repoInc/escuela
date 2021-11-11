@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS notas (
    cantidad INTEGER DEFAULT NULL,
    total FLOAT DEFAULT NULL,
    idEstudiante VARCHAR NOT NULL REFERENCES fichas(id), 
-  idConcepto VARCHAR NOT NULL REFERENCES conceptos(id)
+   idConcepto VARCHAR NOT NULL REFERENCES conceptos(id)
  );
 
  CREATE TABLE IF NOT EXISTS conceptoPagos(
