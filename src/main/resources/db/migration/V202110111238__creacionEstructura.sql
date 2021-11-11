@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS fichas (
 CREATE TABLE IF NOT EXISTS maestros (
   id VARCHAR PRIMARY KEY,
   nombre VARCHAR(50) DEFAULT NULL,
-  apellido VARCHAR(50) DEFAULT NULL,
+  apellidos VARCHAR(50) DEFAULT NULL,
   direccion VARCHAR(50) DEFAULT NULL,
   telefono VARCHAR(50) NOT NULL,
   mail VARCHAR(50) NOT NULL
@@ -54,3 +54,59 @@ CREATE TABLE IF NOT EXISTS notas (
    concepto VARCHAR(50) DEFAULT NULL,
    precio FLOAT DEFAULT NULL
  ) ;
+
+ CREATE TABLE IF NOT EXISTS cobros(
+   id VARCHAR PRIMARY KEY,
+   fechaCobro TIME DEFAULT NULL,
+   precio FLOAT DEFAULT NULL,
+   cantidad INTEGER DEFAULT NULL,
+   total FLOAT DEFAULT NULL,
+   idEstudiante VARCHAR NOT NULL REFERENCES fichas(id), 
+  idConcepto VARCHAR NOT NULL REFERENCES conceptos(id)
+ );
+
+ CREATE TABLE IF NOT EXISTS conceptoPagos(
+   id VARCHAR PRIMARY KEY,
+   concepto VARCHAR DEFAULT NULL,
+   precio FLOAT DEFAULT NULL
+ );
+
+  CREATE TABLE IF NOT EXISTS empleados(
+    id VARCHAR PRIMARY KEY,
+  nombre VARCHAR(50) DEFAULT NULL,
+  apellidos VARCHAR(50) DEFAULT NULL,
+  direccion VARCHAR(50) DEFAULT NULL,
+  telefono VARCHAR(50) NOT NULL,
+  mail VARCHAR(50) NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS jornada(
+    id VARCHAR PRIMARY KEY,
+    jornada VARCHAR DEFAULT NULL
+  );
+
+
+  CREATE TABLE IF NOT EXISTS proveedores(
+    id VARCHAR PRIMARY KEY,
+    nombre VARCHAR DEFAULT NULL,
+    direccion VARCHAR DEFAULT NULL,
+    telefono VARCHAR DEFAULT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS producto(
+    id VARCHAR PRIMARY KEY,
+    producto VARCHAR DEFAULT NULL,
+    precioCosto FLOAT DEFAULT NULL,
+    utilidad FLOAT DEFAULT NULL,
+    precioVenta FLOAT DEFAULT NULL,
+    idProveedor VARCHAR NOT NULL REFERENCES proveedores(id)
+  );
+
+  CREATE TABLE IF NOT EXISTS ventas(
+    id VARCHAR PRIMARY KEY,
+    idEmpleado VARCHAR NOT NULL REFERENCES empleados(id),
+    idEstudiante VARCHAR NOT NULL REFERENCES fichas(id),
+    fechaVenta TIME NOT NULL
+  );
+
+

@@ -14,7 +14,7 @@ public class Proveedor {
 
     @Column(name = "nombre")
     private String nombre;
-
+    
     @Column(name = "direccion")
     private String direccion;
 
