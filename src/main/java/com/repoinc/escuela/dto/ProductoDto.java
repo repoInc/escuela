@@ -1,11 +1,7 @@
 package com.repoinc.escuela.dto;
 
 import com.repoinc.escuela.modelo.Proveedor;
-import org.springframework.lang.NonNull;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Objects;
 
 public class ProductoDto {

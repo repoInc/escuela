@@ -2,11 +2,7 @@ package com.repoinc.escuela.dto;
 
 import com.repoinc.escuela.modelo.Curso;
 import com.repoinc.escuela.modelo.Maestro;
-import org.springframework.lang.NonNull;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Objects;
 
 public class MateriaDto {

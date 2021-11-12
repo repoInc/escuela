@@ -2,11 +2,6 @@ package com.repoinc.escuela.dto;
 
 import com.repoinc.escuela.modelo.Empleado;
 import com.repoinc.escuela.modelo.FichaEstudiante;
-import org.springframework.lang.NonNull;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 import java.util.Objects;
 
