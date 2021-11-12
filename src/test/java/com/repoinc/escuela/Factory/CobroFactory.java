@@ -16,7 +16,7 @@ public class CobroFactory {
     private CobroRepository cobroRepository;
 
     public List<Cobro> construyeCobro(
-            int numCrobro,
+            int numCobro,
             FichaEstudiante fichaEstudiante,
             ConceptoPago conceptoPago,
             Jornada jornada,
@@ -24,7 +24,7 @@ public class CobroFactory {
 
         List<Cobro> listaCobros = new ArrayList<>();
 
-        for(int i=1; i<numCrobro; i++){
+        for(int i=1; i<numCobro; i++){
 
             Cobro cobro = new Cobro();
 
@@ -44,13 +44,13 @@ public class CobroFactory {
     }
 
     public List<Cobro> creaCobros(
-            int numCrobro,
+            int numCobro,
             FichaEstudiante fichaEstudiante,
             ConceptoPago conceptoPago,
             Jornada jornada,
             Empleado empleado) {
 
-        List<Cobro> listaConstruye = construyeCobro(numCrobro, fichaEstudiante, conceptoPago, jornada, empleado);
+        List<Cobro> listaConstruye = construyeCobro(numCobro, fichaEstudiante, conceptoPago, jornada, empleado);
         List<Cobro> baseDatos = new ArrayList<>();
 
         for (Cobro cobro : listaConstruye){
