@@ -1,31 +1,20 @@
-package com.repoinc.escuela.modelo;
+package com.repoinc.escuela.dto;
 
+import com.repoinc.escuela.modelo.Empleado;
+import com.repoinc.escuela.modelo.FichaEstudiante;
 import org.springframework.lang.NonNull;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
-@Table(name = "ventas")
-public class Venta {
+public class VentaDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private String idVenta;
-
-    @ManyToOne
-    @JoinColumn(name = "idEmpleado")
-    @NonNull
     private Empleado empleado;
-
-    @ManyToOne
-    @JoinColumn(name = "idEstudiante")
-    @NonNull
     private FichaEstudiante fichaEstudiante;
-
-    @Column(name = "fechaVenta")
     private Date fechaVenta;
 
     public String getIdVenta() {
@@ -36,21 +25,19 @@ public class Venta {
         this.idVenta = idVenta;
     }
 
-    @NonNull
     public Empleado getEmpleado() {
         return empleado;
     }
 
-    public void setEmpleado(@NonNull Empleado empleado) {
+    public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
 
-    @NonNull
     public FichaEstudiante getFichaEstudiante() {
         return fichaEstudiante;
     }
 
-    public void setFichaEstudiante(@NonNull FichaEstudiante fichaEstudiante) {
+    public void setFichaEstudiante(FichaEstudiante fichaEstudiante) {
         this.fichaEstudiante = fichaEstudiante;
     }
 
@@ -65,9 +52,9 @@ public class Venta {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Venta)) return false;
-        Venta venta = (Venta) o;
-        return getIdVenta().equals(venta.getIdVenta()) && getEmpleado().equals(venta.getEmpleado()) && getFichaEstudiante().equals(venta.getFichaEstudiante()) && getFechaVenta().equals(venta.getFechaVenta());
+        if (!(o instanceof VentaDto)) return false;
+        VentaDto ventaDto = (VentaDto) o;
+        return getIdVenta().equals(ventaDto.getIdVenta()) && getEmpleado().equals(ventaDto.getEmpleado()) && getFichaEstudiante().equals(ventaDto.getFichaEstudiante()) && getFechaVenta().equals(ventaDto.getFechaVenta());
     }
 
     @Override

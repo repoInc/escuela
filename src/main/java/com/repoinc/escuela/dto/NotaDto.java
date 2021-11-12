@@ -1,82 +1,51 @@
-package com.repoinc.escuela.modelo;
+package com.repoinc.escuela.dto;
 
+import com.repoinc.escuela.modelo.Curso;
+import com.repoinc.escuela.modelo.FichaEstudiante;
+import com.repoinc.escuela.modelo.Materia;
 import org.springframework.lang.NonNull;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Objects;
 
-@Entity
-@Table(name = "notas")
-public class Nota implements Serializable {
+public class NotaDto {
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "idEstudiante")
-    @NonNull
     private FichaEstudiante fichaEstudiante;
-
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "idCurso")
-    @NonNull
-    private  Curso curso;
-
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "idMateria")
-    @NonNull
-    private  Materia materia;
-
-    @Id
-    @Column(name ="anio")
+    private Curso curso;
+    private Materia materia;
     private Long anio;
-
-    @Column(name = "examen_1")
     private Float examen_1;
-
-    @Column(name = "examen_2")
     private Float examen_2;
-
-    @Column(name = "examen_3")
     private Float examen_3;
-
-    @Column(name = "examen_4")
     private Float examen_4;
-
-    @Column(name = "promedio")
     private Float promedio;
-
-    @Column(name = "recuperacion_1")
     private Float recuperacion_1;
-
-    @Column(name = "recuperacion_2")
     private Float recuperacion_2;
 
-    @NonNull
     public FichaEstudiante getFichaEstudiante() {
         return fichaEstudiante;
     }
 
-    public void setFichaEstudiante(@NonNull FichaEstudiante fichaEstudiante) {
+    public void setFichaEstudiante(FichaEstudiante fichaEstudiante) {
         this.fichaEstudiante = fichaEstudiante;
     }
 
-    @NonNull
     public Curso getCurso() {
         return curso;
     }
 
-    public void setCurso(@NonNull Curso curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
     }
 
-    @NonNull
     public Materia getMateria() {
         return materia;
     }
 
-    public void setMateria(@NonNull Materia materia) {
+    public void setMateria(Materia materia) {
         this.materia = materia;
     }
 
@@ -147,9 +116,9 @@ public class Nota implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Nota)) return false;
-        Nota nota = (Nota) o;
-        return getFichaEstudiante().equals(nota.getFichaEstudiante()) && getCurso().equals(nota.getCurso()) && getMateria().equals(nota.getMateria()) && getAnio().equals(nota.getAnio()) && getExamen_1().equals(nota.getExamen_1()) && getExamen_2().equals(nota.getExamen_2()) && getExamen_3().equals(nota.getExamen_3()) && getExamen_4().equals(nota.getExamen_4()) && getPromedio().equals(nota.getPromedio()) && getRecuperacion_1().equals(nota.getRecuperacion_1()) && getRecuperacion_2().equals(nota.getRecuperacion_2());
+        if (!(o instanceof NotaDto)) return false;
+        NotaDto notaDto = (NotaDto) o;
+        return Objects.equals(getFichaEstudiante(), notaDto.getFichaEstudiante()) && Objects.equals(getCurso(), notaDto.getCurso()) && Objects.equals(getMateria(), notaDto.getMateria()) && Objects.equals(getAnio(), notaDto.getAnio()) && Objects.equals(getExamen_1(), notaDto.getExamen_1()) && Objects.equals(getExamen_2(), notaDto.getExamen_2()) && Objects.equals(getExamen_3(), notaDto.getExamen_3()) && Objects.equals(getExamen_4(), notaDto.getExamen_4()) && Objects.equals(getPromedio(), notaDto.getPromedio()) && Objects.equals(getRecuperacion_1(), notaDto.getRecuperacion_1()) && Objects.equals(getRecuperacion_2(), notaDto.getRecuperacion_2());
     }
 
     @Override

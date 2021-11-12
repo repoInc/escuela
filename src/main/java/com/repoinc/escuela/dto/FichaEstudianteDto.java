@@ -1,48 +1,25 @@
-package com.repoinc.escuela.modelo;
+package com.repoinc.escuela.dto;
 
+import com.repoinc.escuela.modelo.Curso;
+import org.springframework.lang.NonNull;
+
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 import java.util.Objects;
 
-import org.springframework.lang.NonNull;
+public class FichaEstudianteDto {
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "fichas")
-public class Ficha {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private String idEstudiante;
-
-    @Column(name = "nombre")
     private String nombre;
-
-    @Column(name = "apellidos")
     private String apellidos;
-
-    @Column(name = "direccion")
     private String direccion;
-
-    @Column(name = "fechaNacimiento")
     private Date fechaNacimiento;
-
-    @Column(name = "sexo")
     private String sexo;
-
-    @Column(name = "padre")
     private String padre;
-
-    @Column(name = "madre")
     private String madre;
-
-    @Column(name = "fechaMatricula")
     private  Date fechaMatricula;
-
-    @ManyToOne
-    @JoinColumn(name = "idCurso")
-    @NonNull
     private Curso curso;
 
     public String getIdEstudiante() {
@@ -117,20 +94,19 @@ public class Ficha {
         this.fechaMatricula = fechaMatricula;
     }
 
-    @NonNull
     public Curso getCurso() {
         return curso;
     }
 
-    public void setCurso(@NonNull Curso curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Ficha)) return false;
-        Ficha that = (Ficha) o;
+        if (!(o instanceof FichaEstudianteDto)) return false;
+        FichaEstudianteDto that = (FichaEstudianteDto) o;
         return getIdEstudiante().equals(that.getIdEstudiante()) && getNombre().equals(that.getNombre()) && getApellidos().equals(that.getApellidos()) && getDireccion().equals(that.getDireccion()) && getFechaNacimiento().equals(that.getFechaNacimiento()) && getSexo().equals(that.getSexo()) && getPadre().equals(that.getPadre()) && getMadre().equals(that.getMadre()) && getFechaMatricula().equals(that.getFechaMatricula()) && getCurso().equals(that.getCurso());
     }
 
