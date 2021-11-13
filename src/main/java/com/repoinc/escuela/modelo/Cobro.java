@@ -13,7 +13,7 @@ public class Cobro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idCobro;
+    private Long id;
 
     @Column(name = "fechaCobro")
     private Date fechaCobro;
@@ -28,31 +28,31 @@ public class Cobro {
     private Float total;
 
     @ManyToOne
-    @JoinColumn(name = "idEstudiante")
+    @JoinColumn(name = "fk_fichaEstudiantes")
     @NonNull
     private FichaEstudiante fichaEstudiante;
 
     @ManyToOne
-    @JoinColumn(name = "idConcepto")
+    @JoinColumn(name = "fk_conceptoPagos")
     @NonNull
     private  ConceptoPago conceptoPago;
 
     @ManyToOne
-    @JoinColumn(name = "idJornada")
+    @JoinColumn(name = "fk_jornadas")
     @NonNull
     private  Jornada jornada;
 
     @ManyToOne
-    @JoinColumn(name = "idEmpleado")
+    @JoinColumn(name = "fk_empleados")
     @NonNull
     private  Empleado empleado;
 
-    public String getIdCobro() {
-        return idCobro;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdCobro(String idCobro) {
-        this.idCobro = idCobro;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getFechaCobro() {
@@ -128,11 +128,11 @@ public class Cobro {
         if (this == o) return true;
         if (!(o instanceof Cobro)) return false;
         Cobro cobro = (Cobro) o;
-        return getIdCobro().equals(cobro.getIdCobro()) && getFechaCobro().equals(cobro.getFechaCobro()) && getPrecio().equals(cobro.getPrecio()) && getCantidad().equals(cobro.getCantidad()) && getTotal().equals(cobro.getTotal()) && getFichaEstudiante().equals(cobro.getFichaEstudiante()) && getConceptoPago().equals(cobro.getConceptoPago()) && getJornada().equals(cobro.getJornada()) && getEmpleado().equals(cobro.getEmpleado());
+        return getId().equals(cobro.getId()) && getFechaCobro().equals(cobro.getFechaCobro()) && getPrecio().equals(cobro.getPrecio()) && getCantidad().equals(cobro.getCantidad()) && getTotal().equals(cobro.getTotal()) && getFichaEstudiante().equals(cobro.getFichaEstudiante()) && getConceptoPago().equals(cobro.getConceptoPago()) && getJornada().equals(cobro.getJornada()) && getEmpleado().equals(cobro.getEmpleado());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdCobro(), getFechaCobro(), getPrecio(), getCantidad(), getTotal(), getFichaEstudiante(), getConceptoPago(), getJornada(), getEmpleado());
+        return Objects.hash(getId(), getFechaCobro(), getPrecio(), getCantidad(), getTotal(), getFichaEstudiante(), getConceptoPago(), getJornada(), getEmpleado());
     }
 }

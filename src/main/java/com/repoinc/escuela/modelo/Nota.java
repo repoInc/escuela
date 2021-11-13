@@ -11,26 +11,26 @@ import java.util.Objects;
 public class Nota implements Serializable {
 
     @Id
+    @Column(name ="anio")
+    private Long anio;
+
+    @Id
     @ManyToOne
-    @JoinColumn(name = "idEstudiante")
+    @JoinColumn(name = "fk_estudiantes")
     @NonNull
     private FichaEstudiante fichaEstudiante;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "idCurso")
+    @JoinColumn(name = "fk_cursos")
     @NonNull
     private  Curso curso;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "idMateria")
+    @JoinColumn(name = "fk_materias")
     @NonNull
     private  Materia materia;
-
-    @Id
-    @Column(name ="anio")
-    private Long anio;
 
     @Column(name = "examen_1")
     private Float examen_1;
@@ -52,6 +52,14 @@ public class Nota implements Serializable {
 
     @Column(name = "recuperacion_2")
     private Float recuperacion_2;
+
+    public Long getAnio() {
+        return anio;
+    }
+
+    public void setAnio(Long anio) {
+        this.anio = anio;
+    }
 
     @NonNull
     public FichaEstudiante getFichaEstudiante() {
@@ -78,14 +86,6 @@ public class Nota implements Serializable {
 
     public void setMateria(@NonNull Materia materia) {
         this.materia = materia;
-    }
-
-    public Long getAnio() {
-        return anio;
-    }
-
-    public void setAnio(Long anio) {
-        this.anio = anio;
     }
 
     public Float getExamen_1() {
@@ -149,11 +149,11 @@ public class Nota implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Nota)) return false;
         Nota nota = (Nota) o;
-        return getFichaEstudiante().equals(nota.getFichaEstudiante()) && getCurso().equals(nota.getCurso()) && getMateria().equals(nota.getMateria()) && getAnio().equals(nota.getAnio()) && getExamen_1().equals(nota.getExamen_1()) && getExamen_2().equals(nota.getExamen_2()) && getExamen_3().equals(nota.getExamen_3()) && getExamen_4().equals(nota.getExamen_4()) && getPromedio().equals(nota.getPromedio()) && getRecuperacion_1().equals(nota.getRecuperacion_1()) && getRecuperacion_2().equals(nota.getRecuperacion_2());
+        return getAnio().equals(nota.getAnio()) && getFichaEstudiante().equals(nota.getFichaEstudiante()) && getCurso().equals(nota.getCurso()) && getMateria().equals(nota.getMateria()) && getExamen_1().equals(nota.getExamen_1()) && getExamen_2().equals(nota.getExamen_2()) && getExamen_3().equals(nota.getExamen_3()) && getExamen_4().equals(nota.getExamen_4()) && getPromedio().equals(nota.getPromedio()) && getRecuperacion_1().equals(nota.getRecuperacion_1()) && getRecuperacion_2().equals(nota.getRecuperacion_2());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFichaEstudiante(), getCurso(), getMateria(), getAnio(), getExamen_1(), getExamen_2(), getExamen_3(), getExamen_4(), getPromedio(), getRecuperacion_1(), getRecuperacion_2());
+        return Objects.hash(getAnio(), getFichaEstudiante(), getCurso(), getMateria(), getExamen_1(), getExamen_2(), getExamen_3(), getExamen_4(), getPromedio(), getRecuperacion_1(), getRecuperacion_2());
     }
 }

@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 
 @Service
 public class CobroService {
@@ -30,7 +33,7 @@ public class CobroService {
     @Autowired
     private EmpleadoRepository empleadoRepository;
 
-    // Comienzo de los metodos del Service
+    // Inicio de los metodos del Service
 
     @Transactional
     public List<CobroDto> getAllCobro(){
@@ -46,15 +49,15 @@ public class CobroService {
         return dto;
     }
 
-
-
-
     public CobroDto entidad_a_dto(Cobro cobro) {
 
         CobroDto cobroDto = new CobroDto();
 
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+
         // cobroDto.setIdCobro(cobro.getIdCobro());
-        cobroDto.setFechaCobro(cobro.getFechaCobro());
+        cobroDto.setFechaCobro(dateFormat.format(cobro.getFechaCobro()));
         cobroDto.setPrecio(cobro.getPrecio());
         cobroDto.setCantidad(cobro.getCantidad());
         cobroDto.setTotal(cobro.getTotal());
@@ -70,20 +73,23 @@ public class CobroService {
 
         Cobro cobro = new Cobro();
 
-        FichaEstudiante fichaEstudiante = fichaEstudianteRepository.findById(cobro.getFichaEstudiante().getIdEstudiante())
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+        FichaEstudiante fichaEstudiante = fichaEstudianteRepository.findById(cobro.getFichaEstudiante().getId())
                 .orElseThrow(() -> new Exception("No existe ninguna fichaEstudiante"));
 
-        ConceptoPago conceptoPago = conceptoPagoRepository.findById(cobro.getConceptoPago().getIdConcepto())
+        ConceptoPago conceptoPago = conceptoPagoRepository.findById(cobro.getConceptoPago().getId())
                 .orElseThrow(() -> new Exception("No existe ningun ConceptoPAgo"));
 
-        Jornada jornada = jornadaRepository.findById(cobro.getJornada().getIdJornada())
+        Jornada jornada = jornadaRepository.findById(cobro.getJornada().getId())
                 .orElseThrow(() -> new Exception ("No existe ninguna Jornada"));
 
-        Empleado empleado = empleadoRepository.findById(cobro.getEmpleado().getIdEmpleado())
+        Empleado empleado = empleadoRepository.findById(cobro.getEmpleado().getId())
                 .orElseThrow(() -> new Exception("No existe ningun Empleado"));
 
         // cobro.setIdCobro(cobroDto.getIdCobro());
-        cobro.setFechaCobro(cobroDto.getFechaCobro());
+        cobro.setFechaCobro(dateFormat.parse("2021-01-01 00:00:00"));
         cobro.setPrecio(cobroDto.getPrecio());
         cobro.setCantidad(cobroDto.getCantidad());
         cobro.setTotal(cobroDto.getTotal());

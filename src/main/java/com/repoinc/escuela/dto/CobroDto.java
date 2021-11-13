@@ -10,8 +10,8 @@ import java.util.Objects;
 
 public class CobroDto {
 
-    private String idCobro;
-    private Date fechaCobro;
+    private Long id;
+    private String fechaCobro;
     private Float precio;
     private Integer cantidad;
     private Float total;
@@ -20,19 +20,19 @@ public class CobroDto {
     private Jornada jornada;
     private Empleado empleado;
 
-    public String getIdCobro() {
-        return idCobro;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdCobro(String idCobro) {
-        this.idCobro = idCobro;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Date getFechaCobro() {
+    public String getFechaCobro() {
         return fechaCobro;
     }
 
-    public void setFechaCobro(Date fechaCobro) {
+    public void setFechaCobro(String fechaCobro) {
         this.fechaCobro = fechaCobro;
     }
 
@@ -97,11 +97,11 @@ public class CobroDto {
         if (this == o) return true;
         if (!(o instanceof CobroDto)) return false;
         CobroDto cobroDto = (CobroDto) o;
-        return getIdCobro().equals(cobroDto.getIdCobro()) && getFechaCobro().equals(cobroDto.getFechaCobro()) && getPrecio().equals(cobroDto.getPrecio()) && getCantidad().equals(cobroDto.getCantidad()) && getTotal().equals(cobroDto.getTotal()) && getFichaEstudiante().equals(cobroDto.getFichaEstudiante()) && getConceptoPago().equals(cobroDto.getConceptoPago()) && getJornada().equals(cobroDto.getJornada()) && getEmpleado().equals(cobroDto.getEmpleado());
+        return getId().equals(cobroDto.getId()) && getFechaCobro().equals(cobroDto.getFechaCobro()) && getPrecio().equals(cobroDto.getPrecio()) && getCantidad().equals(cobroDto.getCantidad()) && getTotal().equals(cobroDto.getTotal()) && getFichaEstudiante().equals(cobroDto.getFichaEstudiante()) && getConceptoPago().equals(cobroDto.getConceptoPago()) && getJornada().equals(cobroDto.getJornada()) && getEmpleado().equals(cobroDto.getEmpleado());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdCobro(), getFechaCobro(), getPrecio(), getCantidad(), getTotal(), getFichaEstudiante(), getConceptoPago(), getJornada(), getEmpleado());
+        return Objects.hash(getId(), getFechaCobro(), getPrecio(), getCantidad(), getTotal(), getFichaEstudiante(), getConceptoPago(), getJornada(), getEmpleado());
     }
 }

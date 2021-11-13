@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class ConceptoPagoDto {
 
-    private String idConcepto;
+    private Long id;
     private String concepto;
     private Float precio;
 
-    public String getIdConcepto() {
-        return idConcepto;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdConcepto(String idConcepto) {
-        this.idConcepto = idConcepto;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getConcepto() {
@@ -36,12 +36,12 @@ public class ConceptoPagoDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ConceptoPagoDto)) return false;
-        ConceptoPagoDto that = (ConceptoPagoDto) o;
-        return Objects.equals(getIdConcepto(), that.getIdConcepto()) && Objects.equals(getConcepto(), that.getConcepto()) && Objects.equals(getPrecio(), that.getPrecio());
+        ConceptoPagoDto dto = (ConceptoPagoDto) o;
+        return getId().equals(dto.getId()) && getConcepto().equals(dto.getConcepto()) && getPrecio().equals(dto.getPrecio());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdConcepto(), getConcepto(), getPrecio());
+        return Objects.hash(getId(), getConcepto(), getPrecio());
     }
 }

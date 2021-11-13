@@ -1,6 +1,7 @@
 package com.repoinc.escuela.modelo;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "cursos")
@@ -9,7 +10,7 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idCurso;
+    private Long id;
 
     @Column(name = "curso")
     private String curso;
@@ -23,12 +24,12 @@ public class Curso {
     @Column(name = "jornada")
     private String jornada;
 
-    public String getIdCurso() {
-        return idCurso;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdCurso(String idCurso) {
-        this.idCurso = idCurso;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCurso() {
@@ -64,51 +65,15 @@ public class Curso {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((curso == null) ? 0 : curso.hashCode());
-        result = prime * result + ((idCurso == null) ? 0 : idCurso.hashCode());
-        result = prime * result + ((jornada == null) ? 0 : jornada.hashCode());
-        result = prime * result + ((modalidad == null) ? 0 : modalidad.hashCode());
-        result = prime * result + ((seccion == null) ? 0 : seccion.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Curso)) return false;
+        Curso curso1 = (Curso) o;
+        return getId().equals(curso1.getId()) && getCurso().equals(curso1.getCurso()) && getModalidad().equals(curso1.getModalidad()) && getSeccion().equals(curso1.getSeccion()) && getJornada().equals(curso1.getJornada());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Curso other = (Curso) obj;
-        if (curso == null) {
-            if (other.curso != null)
-                return false;
-        } else if (!curso.equals(other.curso))
-            return false;
-        if (idCurso == null) {
-            if (other.idCurso != null)
-                return false;
-        } else if (!idCurso.equals(other.idCurso))
-            return false;
-        if (jornada == null) {
-            if (other.jornada != null)
-                return false;
-        } else if (!jornada.equals(other.jornada))
-            return false;
-        if (modalidad == null) {
-            if (other.modalidad != null)
-                return false;
-        } else if (!modalidad.equals(other.modalidad))
-            return false;
-        if (seccion == null) {
-            if (other.seccion != null)
-                return false;
-        } else if (!seccion.equals(other.seccion))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(getId(), getCurso(), getModalidad(), getSeccion(), getJornada());
     }
 }

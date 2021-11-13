@@ -4,6 +4,7 @@ import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "ventas")
@@ -12,27 +13,35 @@ public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idVenta;
-
-    @ManyToOne
-    @JoinColumn(name = "idEmpleado")
-    @NonNull
-    private Empleado empleado;
-
-    @ManyToOne
-    @JoinColumn(name = "idEstudiante")
-    @NonNull
-    private FichaEstudiante fichaEstudiante;
+    private Long id;
 
     @Column(name = "fechaVenta")
     private Date fechaVenta;
 
-    public String getIdVenta() {
-        return idVenta;
+    @ManyToOne
+    @JoinColumn(name = "fk_empleados")
+    @NonNull
+    private Empleado empleado;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_fichaEstudiantes")
+    @NonNull
+    private FichaEstudiante fichaEstudiante;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setIdVenta(String idVenta) {
-        this.idVenta = idVenta;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getFechaVenta() {
+        return fechaVenta;
+    }
+
+    public void setFechaVenta(Date fechaVenta) {
+        this.fechaVenta = fechaVenta;
     }
 
     @NonNull
@@ -53,57 +62,16 @@ public class Venta {
         this.fichaEstudiante = fichaEstudiante;
     }
 
-    public Date getFechaVenta() {
-        return fechaVenta;
-    }
-
-    public void setFechaVenta(Date fechaVenta) {
-        this.fechaVenta = fechaVenta;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Venta)) return false;
+        Venta venta = (Venta) o;
+        return getId().equals(venta.getId()) && getFechaVenta().equals(venta.getFechaVenta()) && getEmpleado().equals(venta.getEmpleado()) && getFichaEstudiante().equals(venta.getFichaEstudiante());
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((empleado == null) ? 0 : empleado.hashCode());
-        result = prime * result + ((fechaVenta == null) ? 0 : fechaVenta.hashCode());
-        result = prime * result + ((fichaEstudiante == null) ? 0 : fichaEstudiante.hashCode());
-        result = prime * result + ((idVenta == null) ? 0 : idVenta.hashCode());
-        return result;
+        return Objects.hash(getId(), getFechaVenta(), getEmpleado(), getFichaEstudiante());
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Venta other = (Venta) obj;
-        if (empleado == null) {
-            if (other.empleado != null)
-                return false;
-        } else if (!empleado.equals(other.empleado))
-            return false;
-        if (fechaVenta == null) {
-            if (other.fechaVenta != null)
-                return false;
-        } else if (!fechaVenta.equals(other.fechaVenta))
-            return false;
-        if (fichaEstudiante == null) {
-            if (other.fichaEstudiante != null)
-                return false;
-        } else if (!fichaEstudiante.equals(other.fichaEstudiante))
-            return false;
-        if (idVenta == null) {
-            if (other.idVenta != null)
-                return false;
-        } else if (!idVenta.equals(other.idVenta))
-            return false;
-        return true;
-    }
-
-
-  
 }

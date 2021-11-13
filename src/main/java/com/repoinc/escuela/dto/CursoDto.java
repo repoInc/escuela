@@ -4,18 +4,18 @@ import java.util.Objects;
 
 public class CursoDto {
 
-    private String idCurso;
+    private Long id;
     private String curso;
     private String modalidad;
     private String seccion;
     private String jornada;
 
-    public String getIdCurso() {
-        return idCurso;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdCurso(String idCurso) {
-        this.idCurso = idCurso;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCurso() {
@@ -55,11 +55,11 @@ public class CursoDto {
         if (this == o) return true;
         if (!(o instanceof CursoDto)) return false;
         CursoDto cursoDto = (CursoDto) o;
-        return Objects.equals(getIdCurso(), cursoDto.getIdCurso()) && Objects.equals(getCurso(), cursoDto.getCurso()) && Objects.equals(getModalidad(), cursoDto.getModalidad()) && Objects.equals(getSeccion(), cursoDto.getSeccion()) && Objects.equals(getJornada(), cursoDto.getJornada());
+        return getId().equals(cursoDto.getId()) && getCurso().equals(cursoDto.getCurso()) && getModalidad().equals(cursoDto.getModalidad()) && getSeccion().equals(cursoDto.getSeccion()) && getJornada().equals(cursoDto.getJornada());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdCurso(), getCurso(), getModalidad(), getSeccion(), getJornada());
+        return Objects.hash(getId(), getCurso(), getModalidad(), getSeccion(), getJornada());
     }
 }

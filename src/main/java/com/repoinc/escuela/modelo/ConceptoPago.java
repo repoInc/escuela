@@ -10,7 +10,7 @@ public class ConceptoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idConcepto;
+    private Long id;
 
     @Column(name = "concepto")
     private String concepto;
@@ -18,12 +18,12 @@ public class ConceptoPago {
     @Column(name = "precio")
     private Float precio;
 
-    public String getIdConcepto() {
-        return idConcepto;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdConcepto(String idConcepto) {
-        this.idConcepto = idConcepto;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getConcepto() {
@@ -47,11 +47,11 @@ public class ConceptoPago {
         if (this == o) return true;
         if (!(o instanceof ConceptoPago)) return false;
         ConceptoPago that = (ConceptoPago) o;
-        return getIdConcepto().equals(that.getIdConcepto()) && getConcepto().equals(that.getConcepto()) && getPrecio().equals(that.getPrecio());
+        return getId().equals(that.getId()) && getConcepto().equals(that.getConcepto()) && getPrecio().equals(that.getPrecio());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdConcepto(), getConcepto(), getPrecio());
+        return Objects.hash(getId(), getConcepto(), getPrecio());
     }
 }

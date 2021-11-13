@@ -12,7 +12,7 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idProducto;
+    private Long id;
 
     @Column(name = "producto")
     private String producto;
@@ -27,16 +27,16 @@ public class Producto {
     private Float precioVenta;
 
     @ManyToOne
-    @JoinColumn(name = "idProveedor")
+    @JoinColumn(name = "fk_proveedores")
     @NonNull
     private Proveedor proveedor;
 
-    public String getIdProducto() {
-        return idProducto;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProducto(String idProducto) {
-        this.idProducto = idProducto;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getProducto() {
@@ -85,11 +85,11 @@ public class Producto {
         if (this == o) return true;
         if (!(o instanceof Producto)) return false;
         Producto producto1 = (Producto) o;
-        return getIdProducto().equals(producto1.getIdProducto()) && getProducto().equals(producto1.getProducto()) && getPrecioCosto().equals(producto1.getPrecioCosto()) && getUtilidad().equals(producto1.getUtilidad()) && getPrecioVenta().equals(producto1.getPrecioVenta()) && getProveedor().equals(producto1.getProveedor());
+        return getId().equals(producto1.getId()) && getProducto().equals(producto1.getProducto()) && getPrecioCosto().equals(producto1.getPrecioCosto()) && getUtilidad().equals(producto1.getUtilidad()) && getPrecioVenta().equals(producto1.getPrecioVenta()) && getProveedor().equals(producto1.getProveedor());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdProducto(), getProducto(), getPrecioCosto(), getUtilidad(), getPrecioVenta(), getProveedor());
+        return Objects.hash(getId(), getProducto(), getPrecioCosto(), getUtilidad(), getPrecioVenta(), getProveedor());
     }
 }

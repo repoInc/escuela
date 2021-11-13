@@ -6,19 +6,19 @@ import java.util.Objects;
 
 public class ProductoDto {
 
-    private String idProducto;
+    private Long id;
     private String producto;
     private Float precioCosto;
     private Float utilidad;
     private Float precioVenta;
     private Proveedor proveedor;
 
-    public String getIdProducto() {
-        return idProducto;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProducto(String idProducto) {
-        this.idProducto = idProducto;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getProducto() {
@@ -66,11 +66,11 @@ public class ProductoDto {
         if (this == o) return true;
         if (!(o instanceof ProductoDto)) return false;
         ProductoDto that = (ProductoDto) o;
-        return getIdProducto().equals(that.getIdProducto()) && getProducto().equals(that.getProducto()) && getPrecioCosto().equals(that.getPrecioCosto()) && getUtilidad().equals(that.getUtilidad()) && getPrecioVenta().equals(that.getPrecioVenta()) && getProveedor().equals(that.getProveedor());
+        return getId().equals(that.getId()) && getProducto().equals(that.getProducto()) && getPrecioCosto().equals(that.getPrecioCosto()) && getUtilidad().equals(that.getUtilidad()) && getPrecioVenta().equals(that.getPrecioVenta()) && getProveedor().equals(that.getProveedor());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdProducto(), getProducto(), getPrecioCosto(), getUtilidad(), getPrecioVenta(), getProveedor());
+        return Objects.hash(getId(), getProducto(), getPrecioCosto(), getUtilidad(), getPrecioVenta(), getProveedor());
     }
 }

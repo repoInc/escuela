@@ -4,19 +4,19 @@ import java.util.Objects;
 
 public class EmpleadoDto {
 
-    private String idEmpleado;
+    private Long id;
     private String nombre;
     private String apellido;
     private String direccion;
     private String telefono;
     private String email;
 
-    public String getIdEmpleado() {
-        return idEmpleado;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdEmpleado(String idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -64,11 +64,11 @@ public class EmpleadoDto {
         if (this == o) return true;
         if (!(o instanceof EmpleadoDto)) return false;
         EmpleadoDto that = (EmpleadoDto) o;
-        return Objects.equals(getIdEmpleado(), that.getIdEmpleado()) && Objects.equals(getNombre(), that.getNombre()) && Objects.equals(getApellido(), that.getApellido()) && Objects.equals(getDireccion(), that.getDireccion()) && Objects.equals(getTelefono(), that.getTelefono()) && Objects.equals(getEmail(), that.getEmail());
+        return getId().equals(that.getId()) && getNombre().equals(that.getNombre()) && getApellido().equals(that.getApellido()) && getDireccion().equals(that.getDireccion()) && getTelefono().equals(that.getTelefono()) && getEmail().equals(that.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdEmpleado(), getNombre(), getApellido(), getDireccion(), getTelefono(), getEmail());
+        return Objects.hash(getId(), getNombre(), getApellido(), getDireccion(), getTelefono(), getEmail());
     }
 }

@@ -7,17 +7,17 @@ import java.util.Objects;
 
 public class VentaDto {
 
-    private String idVenta;
+    private Long id;
     private Empleado empleado;
     private FichaEstudiante fichaEstudiante;
     private Date fechaVenta;
 
-    public String getIdVenta() {
-        return idVenta;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdVenta(String idVenta) {
-        this.idVenta = idVenta;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Empleado getEmpleado() {
@@ -49,11 +49,11 @@ public class VentaDto {
         if (this == o) return true;
         if (!(o instanceof VentaDto)) return false;
         VentaDto ventaDto = (VentaDto) o;
-        return getIdVenta().equals(ventaDto.getIdVenta()) && getEmpleado().equals(ventaDto.getEmpleado()) && getFichaEstudiante().equals(ventaDto.getFichaEstudiante()) && getFechaVenta().equals(ventaDto.getFechaVenta());
+        return getId().equals(ventaDto.getId()) && getEmpleado().equals(ventaDto.getEmpleado()) && getFichaEstudiante().equals(ventaDto.getFichaEstudiante()) && getFechaVenta().equals(ventaDto.getFechaVenta());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdVenta(), getEmpleado(), getFichaEstudiante(), getFechaVenta());
+        return Objects.hash(getId(), getEmpleado(), getFichaEstudiante(), getFechaVenta());
     }
 }

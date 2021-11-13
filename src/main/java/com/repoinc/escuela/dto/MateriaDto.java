@@ -7,17 +7,17 @@ import java.util.Objects;
 
 public class MateriaDto {
 
-    private String idMateria;
+    private Long id;
     private String materia;
     private Curso curso;
     private Maestro maestro;
 
-    public String getIdMateria() {
-        return idMateria;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdMateria(String idMateria) {
-        this.idMateria = idMateria;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getMateria() {
@@ -49,11 +49,11 @@ public class MateriaDto {
         if (this == o) return true;
         if (!(o instanceof MateriaDto)) return false;
         MateriaDto that = (MateriaDto) o;
-        return Objects.equals(getIdMateria(), that.getIdMateria()) && Objects.equals(getMateria(), that.getMateria()) && Objects.equals(getCurso(), that.getCurso()) && Objects.equals(getMaestro(), that.getMaestro());
+        return getId().equals(that.getId()) && getMateria().equals(that.getMateria()) && getCurso().equals(that.getCurso()) && getMaestro().equals(that.getMaestro());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdMateria(), getMateria(), getCurso(), getMaestro());
+        return Objects.hash(getId(), getMateria(), getCurso(), getMaestro());
     }
 }

@@ -3,17 +3,17 @@ import java.util.Objects;
 
 public class ProveedorDto {
 
-    private String idProveedor;
+    private Long id;
     private String nombre;
     private String direccion;
     private String telefono;
 
-    public String getIdProveedor() {
-        return idProveedor;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProveedor(String idProveedor) {
-        this.idProveedor = idProveedor;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -45,11 +45,11 @@ public class ProveedorDto {
         if (this == o) return true;
         if (!(o instanceof ProveedorDto)) return false;
         ProveedorDto that = (ProveedorDto) o;
-        return getIdProveedor().equals(that.getIdProveedor()) && getNombre().equals(that.getNombre()) && getDireccion().equals(that.getDireccion()) && getTelefono().equals(that.getTelefono());
+        return getId().equals(that.getId()) && getNombre().equals(that.getNombre()) && getDireccion().equals(that.getDireccion()) && getTelefono().equals(that.getTelefono());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdProveedor(), getNombre(), getDireccion(), getTelefono());
+        return Objects.hash(getId(), getNombre(), getDireccion(), getTelefono());
     }
 }

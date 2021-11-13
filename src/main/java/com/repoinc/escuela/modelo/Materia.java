@@ -13,27 +13,27 @@ public class Materia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idMateria;
+    private Long id;
 
     @Column(name = "materia")
     private String materia;
 
     @ManyToOne
-    @JoinColumn(name = "idCurso")
+    @JoinColumn(name = "fk_cursos")
     @NonNull
     private  Curso curso;
 
     @ManyToOne
-    @JoinColumn(name = "idMaestro")
+    @JoinColumn(name = "fk_maestros")
     @NonNull
     private  Maestro maestro;
 
-    public String getIdMateria() {
-        return idMateria;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdMateria(String idMateria) {
-        this.idMateria = idMateria;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getMateria() {
@@ -67,11 +67,11 @@ public class Materia {
         if (this == o) return true;
         if (!(o instanceof Materia)) return false;
         Materia materia1 = (Materia) o;
-        return getIdMateria().equals(materia1.getIdMateria()) && getMateria().equals(materia1.getMateria()) && getCurso().equals(materia1.getCurso()) && getMaestro().equals(materia1.getMaestro());
+        return getId().equals(materia1.getId()) && getMateria().equals(materia1.getMateria()) && getCurso().equals(materia1.getCurso()) && getMaestro().equals(materia1.getMaestro());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdMateria(), getMateria(), getCurso(), getMaestro());
+        return Objects.hash(getId(), getMateria(), getCurso(), getMaestro());
     }
 }

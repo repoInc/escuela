@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public class NotaDto {
 
+    private Long anio;
     private FichaEstudiante fichaEstudiante;
     private Curso curso;
     private Materia materia;
-    private Long anio;
     private Float examen_1;
     private Float examen_2;
     private Float examen_3;
@@ -18,6 +18,14 @@ public class NotaDto {
     private Float promedio;
     private Float recuperacion_1;
     private Float recuperacion_2;
+
+    public Long getAnio() {
+        return anio;
+    }
+
+    public void setAnio(Long anio) {
+        this.anio = anio;
+    }
 
     public FichaEstudiante getFichaEstudiante() {
         return fichaEstudiante;
@@ -41,14 +49,6 @@ public class NotaDto {
 
     public void setMateria(Materia materia) {
         this.materia = materia;
-    }
-
-    public Long getAnio() {
-        return anio;
-    }
-
-    public void setAnio(Long anio) {
-        this.anio = anio;
     }
 
     public Float getExamen_1() {
@@ -112,11 +112,11 @@ public class NotaDto {
         if (this == o) return true;
         if (!(o instanceof NotaDto)) return false;
         NotaDto notaDto = (NotaDto) o;
-        return Objects.equals(getFichaEstudiante(), notaDto.getFichaEstudiante()) && Objects.equals(getCurso(), notaDto.getCurso()) && Objects.equals(getMateria(), notaDto.getMateria()) && Objects.equals(getAnio(), notaDto.getAnio()) && Objects.equals(getExamen_1(), notaDto.getExamen_1()) && Objects.equals(getExamen_2(), notaDto.getExamen_2()) && Objects.equals(getExamen_3(), notaDto.getExamen_3()) && Objects.equals(getExamen_4(), notaDto.getExamen_4()) && Objects.equals(getPromedio(), notaDto.getPromedio()) && Objects.equals(getRecuperacion_1(), notaDto.getRecuperacion_1()) && Objects.equals(getRecuperacion_2(), notaDto.getRecuperacion_2());
+        return getAnio().equals(notaDto.getAnio()) && getFichaEstudiante().equals(notaDto.getFichaEstudiante()) && getCurso().equals(notaDto.getCurso()) && getMateria().equals(notaDto.getMateria()) && getExamen_1().equals(notaDto.getExamen_1()) && getExamen_2().equals(notaDto.getExamen_2()) && getExamen_3().equals(notaDto.getExamen_3()) && getExamen_4().equals(notaDto.getExamen_4()) && getPromedio().equals(notaDto.getPromedio()) && getRecuperacion_1().equals(notaDto.getRecuperacion_1()) && getRecuperacion_2().equals(notaDto.getRecuperacion_2());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFichaEstudiante(), getCurso(), getMateria(), getAnio(), getExamen_1(), getExamen_2(), getExamen_3(), getExamen_4(), getPromedio(), getRecuperacion_1(), getRecuperacion_2());
+        return Objects.hash(getAnio(), getFichaEstudiante(), getCurso(), getMateria(), getExamen_1(), getExamen_2(), getExamen_3(), getExamen_4(), getPromedio(), getRecuperacion_1(), getRecuperacion_2());
     }
 }

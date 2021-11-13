@@ -1,6 +1,6 @@
 package com.repoinc.escuela.serviceTest;
 
-import com.repoinc.escuela.Factory.CobroFactory;
+import com.repoinc.escuela.Factory.*;
 import com.repoinc.escuela.dto.CobroDto;
 import com.repoinc.escuela.modelo.*;
 import com.repoinc.escuela.repository.CobroRepository;
@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.util.List;
 
 @SpringBootTest
@@ -28,19 +29,30 @@ class CobroServiceTest {
     @Autowired
     private CobroService cobroService;
 
+    @Autowired
+    private FichaEstudianteFactory fichaEstudianteFactory;
+
+    @Autowired
+    private ConceptoPagoFactory conceptoPagoFactory;
+
+    @Autowired
+    private JornadaFactory jornadaFactory;
+
+    @Autowired
+    private EmpleadoFactory empleadoFactory;
+
     @Test
-    void getAllCobro() {
+    void getAllCobro() throws ParseException {
 
         // Prepara
 
-        FichaEstudiante fichaEstudiante = new FichaEstudiante();
-        ConceptoPago conceptoPago = new ConceptoPago();
-        Jornada jornada = new Jornada();
-        Empleado empleado = new Empleado();
+        ConceptoPago conceptoPago = conceptoPagoFactory.creaConceptoPago(1).get(0);
+        Jornada jornada = jornadaFactory.creaJornada(1).get(0);
+        FichaEstudiante fichaEstudiante = fichaEstudianteFactory.creaFichaEstudiante(1).get(0);
 
-        Cobro creaCobro = cobroFactory.creaCobros(1, fichaEstudiante, conceptoPago, jornada, empleado).get(0);
+        Empleado empleado = empleadoFactory.creaEmpleados(1).get(0);
 
-        List<Cobro> cobroRepo = cobroRepository.findAll();
+        List<Cobro> lista =  cobroFactory.creaCobros(1, fichaEstudiante, conceptoPago, jornada, empleado);
 
         // Actua
 
@@ -48,6 +60,6 @@ class CobroServiceTest {
 
         // Afirma
 
-        Assertions.assertEquals(cobroRepo.size(), cobrosServ.size());
+        Assertions.assertEquals(lista.size(), cobrosServ.size());
     }
 }

@@ -10,17 +10,17 @@ public class Jornada {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idJornada;
+    private Long id;
 
     @Column(name = "jornada")
     private String jornada;
 
-    public String getIdJornada() {
-        return idJornada;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdJornada(String idJornada) {
-        this.idJornada = idJornada;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getJornada() {
@@ -36,11 +36,11 @@ public class Jornada {
         if (this == o) return true;
         if (!(o instanceof Jornada)) return false;
         Jornada jornada1 = (Jornada) o;
-        return getIdJornada().equals(jornada1.getIdJornada()) && getJornada().equals(jornada1.getJornada());
+        return getId().equals(jornada1.getId()) && getJornada().equals(jornada1.getJornada());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdJornada(), getJornada());
+        return Objects.hash(getId(), getJornada());
     }
 }

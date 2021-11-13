@@ -10,7 +10,7 @@ public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idProveedor;
+    private Long id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -21,12 +21,12 @@ public class Proveedor {
     @Column(name = "telefono")
     private String telefono;
 
-    public String getIdProveedor() {
-        return idProveedor;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProveedor(String idProveedor) {
-        this.idProveedor = idProveedor;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -58,11 +58,11 @@ public class Proveedor {
         if (this == o) return true;
         if (!(o instanceof Proveedor)) return false;
         Proveedor proveedor = (Proveedor) o;
-        return getIdProveedor().equals(proveedor.getIdProveedor()) && getNombre().equals(proveedor.getNombre()) && getDireccion().equals(proveedor.getDireccion()) && getTelefono().equals(proveedor.getTelefono());
+        return getId().equals(proveedor.getId()) && getNombre().equals(proveedor.getNombre()) && getDireccion().equals(proveedor.getDireccion()) && getTelefono().equals(proveedor.getTelefono());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdProveedor(), getNombre(), getDireccion(), getTelefono());
+        return Objects.hash(getId(), getNombre(), getDireccion(), getTelefono());
     }
 }

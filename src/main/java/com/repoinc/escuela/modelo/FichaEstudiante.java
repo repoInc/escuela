@@ -8,13 +8,13 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "fichas")
+@Table(name = "fichaEstudiantes")
 public class FichaEstudiante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idEstudiante;
+    private Long id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -38,19 +38,19 @@ public class FichaEstudiante {
     private String madre;
 
     @Column(name = "fechaMatricula")
-    private  Date fechaMatricula;
+    private Date fechaMatricula;
 
     @ManyToOne
-    @JoinColumn(name = "idCurso")
+    @JoinColumn(name = "fk_cursos")
     @NonNull
     private Curso curso;
 
-    public String getIdEstudiante() {
-        return idEstudiante;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdEstudiante(String idEstudiante) {
-        this.idEstudiante = idEstudiante;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -131,11 +131,11 @@ public class FichaEstudiante {
         if (this == o) return true;
         if (!(o instanceof FichaEstudiante)) return false;
         FichaEstudiante that = (FichaEstudiante) o;
-        return getIdEstudiante().equals(that.getIdEstudiante()) && getNombre().equals(that.getNombre()) && getApellidos().equals(that.getApellidos()) && getDireccion().equals(that.getDireccion()) && getFechaNacimiento().equals(that.getFechaNacimiento()) && getSexo().equals(that.getSexo()) && getPadre().equals(that.getPadre()) && getMadre().equals(that.getMadre()) && getFechaMatricula().equals(that.getFechaMatricula()) && getCurso().equals(that.getCurso());
+        return getId().equals(that.getId()) && getNombre().equals(that.getNombre()) && getApellidos().equals(that.getApellidos()) && getDireccion().equals(that.getDireccion()) && getFechaNacimiento().equals(that.getFechaNacimiento()) && getSexo().equals(that.getSexo()) && getPadre().equals(that.getPadre()) && getMadre().equals(that.getMadre()) && getFechaMatricula().equals(that.getFechaMatricula()) && getCurso().equals(that.getCurso());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdEstudiante(), getNombre(), getApellidos(), getDireccion(), getFechaNacimiento(), getSexo(), getPadre(), getMadre(), getFechaMatricula(), getCurso());
+        return Objects.hash(getId(), getNombre(), getApellidos(), getDireccion(), getFechaNacimiento(), getSexo(), getPadre(), getMadre(), getFechaMatricula(), getCurso());
     }
 }

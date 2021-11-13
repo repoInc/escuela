@@ -5,15 +5,15 @@ import java.util.Objects;
 
 public class JornadaDto {
 
-    private String idJornada;
+    private Long id;
     private String jornada;
 
-    public String getIdJornada() {
-        return idJornada;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdJornada(String idJornada) {
-        this.idJornada = idJornada;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getJornada() {
@@ -29,11 +29,11 @@ public class JornadaDto {
         if (this == o) return true;
         if (!(o instanceof JornadaDto)) return false;
         JornadaDto that = (JornadaDto) o;
-        return Objects.equals(getIdJornada(), that.getIdJornada()) && Objects.equals(getJornada(), that.getJornada());
+        return getId().equals(that.getId()) && getJornada().equals(that.getJornada());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdJornada(), getJornada());
+        return Objects.hash(getId(), getJornada());
     }
 }

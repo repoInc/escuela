@@ -10,7 +10,7 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String idEmpleado;
+    private Long id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -27,12 +27,12 @@ public class Empleado {
     @Column(name = "mail")
     private String email;
 
-    public String getIdEmpleado() {
-        return idEmpleado;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdEmpleado(String idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -78,13 +78,13 @@ public class Empleado {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Maestro)) return false;
-        Maestro maestro = (Maestro) o;
-        return getIdEmpleado().equals(maestro.getIdMaestro()) && getNombre().equals(maestro.getNombre()) && getApellido().equals(maestro.getApellido()) && getDireccion().equals(maestro.getDireccion()) && getTelefono().equals(maestro.getTelefono()) && getEmail().equals(maestro.getEmail());
+        if (!(o instanceof Empleado)) return false;
+        Empleado empleado = (Empleado) o;
+        return getId().equals(empleado.getId()) && getNombre().equals(empleado.getNombre()) && getApellido().equals(empleado.getApellido()) && getDireccion().equals(empleado.getDireccion()) && getTelefono().equals(empleado.getTelefono()) && getEmail().equals(empleado.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdEmpleado(), getNombre(), getApellido(), getDireccion(), getTelefono(), getEmail());
+        return Objects.hash(getId(), getNombre(), getApellido(), getDireccion(), getTelefono(), getEmail());
     }
 }
